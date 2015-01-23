@@ -1,6 +1,0 @@
-CLIENT_VERSION = '1.0.0'
-HTTP_GET = 'GET'
-HTTP_POST = 'POST'
-HTTP_DELETE = 'DELETE'
-API_ENDPOINT = 'https://api.mollie.nl'
-API_VERSION = 'v1'
