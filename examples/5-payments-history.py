@@ -2,8 +2,11 @@
 #
 # Example 5 - How to retrieve your payments history.
 #
-import sys, os
-
+import sys
+import os
+from mollie.api.client import Client
+from mollie.api.error import Error
+from app import EXAMPLE_API_KEY
 #
 # Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
@@ -20,8 +23,8 @@ def main():
         #
         # See: https://www.lib.nl/beheer/account/profielen/
         #
-        mollie = mollie.API.Client()
-        mollie.set_api_key('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie = Client()
+        mollie.set_api_key(EXAMPLE_API_KEY)
 
         #
         # Get the all payments for this API key ordered by newest.
@@ -35,8 +38,8 @@ def main():
 
         return body
 
-    except mollie.API.Error as e:
+    except Error as e:
         return 'API call failed: ' + e.message
 
-if __name__ == '__main__':
-    print main()
+# if __name__ == '__main__':
+#     print main()

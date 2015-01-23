@@ -1,0 +1,10 @@
+machine:
+  timezone:
+    Europe/Amsterdam
+  python:
+    version: 3.4.1
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init # use submodules

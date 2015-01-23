@@ -9,7 +9,6 @@ from app import *
 from mollie.api.client import Client
 from mollie.api.error import Error
 
-
 #
 # Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
@@ -25,7 +24,7 @@ def main():
         # See: https://www.mollie.nl/beheer/account/profielen/
         #
         mollie = Client()
-        mollie.set_api_key('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie.set_api_key(EXAMPLE_API_KEY)
 
         #
         # Generate a unique order number for this example. It is important to include this unique attribute
@@ -63,5 +62,5 @@ def main():
         return 'API call failed: ' + e.message
 
 
-# if __name__ == '__main__':
-#     print main()
+if __name__ == '__main__':
+    main()

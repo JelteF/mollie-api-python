@@ -1,11 +1,12 @@
 #
 # Example 2 - How to verify mollie API Payments in a webhook.
 #
-import sys, os, flask
+import sys
+import os
+import flask
 from app import *
 from mollie.api import client
 from mollie.api.error import Error
-
 #
 # Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
@@ -23,7 +24,7 @@ def main():
         # See: https://www.lib.nl/beheer/account/profielen/
         #
         mollie = client.Client()
-        mollie.set_api_key('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie.set_api_key(EXAMPLE_API_KEY)
 
         #
         # Retrieve the payment's current state.
