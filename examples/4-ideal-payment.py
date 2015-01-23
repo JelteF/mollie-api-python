@@ -1,28 +1,28 @@
 # coding=utf-8
 #
-# Example 4 - How to prepare an iDEAL payment with the Mollie API.
+# Example 4 - How to prepare an iDEAL payment with the mollie API.
 #
 import sys, os, time, flask
 from app import database_write
 
 #
-# Add Mollie library to module path so we can import it.
+# Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
 #
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../'))
 
-import Mollie
+import mollie
 
 
 def main ():
     try:
         #
-        # Initialize the Mollie API library with your API key.
+        # Initialize the mollie API library with your API key.
         #
         # See: https://www.lib.nl/beheer/account/profielen/
         #
-        mollie = Mollie.API.Client()
-        mollie.setApiKey('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie = mollie.API.Client()
+        mollie.set_api_key('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
 
         #
         # First, let the customer pick the bank in a simple HTML form. This step is actually optional.
@@ -31,7 +31,7 @@ def main ():
             body = '<form method="post">Select your bank: <select name="issuer">'
 
             for issuer in mollie.issuers.all():
-                if issuer['method'] == Mollie.API.Object.Method.IDEAL:
+                if issuer['method'] == mollie.API.Object.Method.IDEAL:
                     body += '<option value="%s">%s</option>' % (issuer['id'], issuer['name'])
 
             body += '<option value="">or select later</option>'
@@ -81,9 +81,9 @@ def main ():
             #
             # Send the customer off to complete the payment.
             #
-            return flask.redirect(payment.getPaymentUrl())
+            return flask.redirect(payment.get_payment_url())
 
-    except Mollie.API.Error as e:
+    except mollie.API.Error as e:
         return 'API call failed: ' + e.message
 
 

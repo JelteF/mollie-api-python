@@ -1,6 +1,7 @@
 import os
 import flask
 
+
 app = flask.Flask(__name__)
 examples = [
     '1-new-payment',

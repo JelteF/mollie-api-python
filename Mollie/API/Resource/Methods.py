@@ -1,7 +1,7 @@
-from Base import *
-from Mollie.API.Object import Method
+from mollie.api.resource.base_resource import BaseResource
+from mollie.api.object.method import Method
 
 
-class Methods(Base):
-    def getResourceObject(self, result):
+class Methods(BaseResource):
+    def get_resource_object(self, result):
         return Method(result)

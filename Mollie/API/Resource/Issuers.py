@@ -1,7 +1,7 @@
-from Base import *
-from Mollie.API.Object import Issuer
+from mollie.api.resource.base_resource import BaseResource
+from mollie.api.object.issuer import Issuer
 
 
-class Issuers(Base):
-    def getResourceObject(self, result):
+class Issuers(BaseResource):
+    def get_resource_object(self, result):
         return Issuer(result)

@@ -1,5 +1,5 @@
-from Base import *
+from mollie.api.object.base_object import BaseObject
 
 
-class Issuer(Base):
+class Issuer(BaseObject):
     pass

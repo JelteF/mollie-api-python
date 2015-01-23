@@ -1,12 +1,12 @@
-from Base import *
-from Mollie.API.Error import *
-from Mollie.API.Object import Payment, Refund
+from mollie.api.error import *
+from mollie.api.object.payment import Payment, Refund
+from .base_resource import BaseResource
 
 
-class Payments(Base):
+class Payments(BaseResource):
     RESOURCE_ID_PREFIX = 'tr_'
 
-    def getResourceObject(self, result):
+    def get_resource_object(self, result):
         return Payment(result)
 
     def get(self, payment_id):
@@ -20,13 +20,13 @@ class Payments(Base):
         return self.client.payment_refunds.on(payment).create()
 
 
-class Refunds(Base):
+class Refunds(BaseResource):
     payment_id = None
 
-    def getResourceObject(self, result):
+    def get_resource_object(self, result):
         return Refund(result)
 
-    def getResourceName(self):
+    def get_resource_name(self):
         return 'payments/%i/refunds' % self.payment_id
 
     def on(self, payment):
