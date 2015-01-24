@@ -1,3 +1,0 @@
-include *.mdown *.txt
-recursive-include mollie *.py *.pem
-prune examples

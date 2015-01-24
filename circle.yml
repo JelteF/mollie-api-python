@@ -1,0 +1,10 @@
+machine:
+  timezone:
+    Europe/Amsterdam
+  python:
+    version: 3.4.1
+
+test:
+  override:
+    - ls -al
+    - python3 -m mollie.tests
