@@ -12,6 +12,7 @@ from mollie.api.resource.methods import Methods
 from mollie.api.error import Error
 from mollie.api import API_ENDPOINT, API_VERSION, CLIENT_VERSION
 
+
 class Client:
 
     def __init__(self):

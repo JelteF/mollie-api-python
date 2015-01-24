@@ -1,9 +1,8 @@
 ![Mollie](https://www.Mollie.nl/files/Mollie-Logo-Style-Small.png) 
-
+[![Circle CI](https://circleci.com/gh/Akoten/mollie-api-python/tree/master.svg?style=svg)](https://circleci.com/gh/Akoten/mollie-api-python/tree/master)
 # Mollie API client for Python #
 
 Accepting [iDEAL](https://www.Mollie.nl/betaaldiensten/ideal/), [Mister Cash](https://www.Mollie.nl/betaaldiensten/mistercash/), [Creditcard](https://www.Mollie.nl/betaaldiensten/creditcard/), [SEPA bank transfers](https://www.Mollie.nl/betaaldiensten/overboeking/),  [Bitcoin](https://www.Mollie.nl/betaaldiensten/bitcoin/), [PayPal](https://www.Mollie.nl/betaaldiensten/paypal/), and [paysafecard](https://www.Mollie.nl/betaaldiensten/paysafecard/) online payments without fixed monthly costs or any punishing registration procedures. Just use the Mollie API to receive payments directly on your website.
-[![Circle CI](https://circleci.com/gh/Akoten/mollie-api-python/tree/master.svg?style=svg)](https://circleci.com/gh/Akoten/mollie-api-python/tree/master)
 ## Requirements ##
 To use the Mollie API client, the following things are required:
 

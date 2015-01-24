@@ -17,7 +17,7 @@ class Payments(BaseResource):
         return super(Payments, self).get(payment_id)
 
     def refund(self, payment):
-        return self.client.payment_refunds.on(payment).create()
+        return self.client.payment_refunds.on(payment).create()  # TODO add functionality
 
 
 class Refunds(BaseResource):
@@ -27,7 +27,7 @@ class Refunds(BaseResource):
         return Refund(result)
 
     def get_resource_name(self):
-        return 'payments/%i/refunds' % self.payment_id
+        return 'payments/%s/refunds' % self.payment_id
 
     def on(self, payment):
         self.payment_id = payment['id']

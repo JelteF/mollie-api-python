@@ -19,9 +19,35 @@ class TestClient(unittest.TestCase):
                 }
             })
             self.assertTrue(payment.is_open())
+            return payment
 
         except Error as e:
             return 'API call failed: ' + e.message
+
+    def test_get(self):
+        created_payment = self.test_create()
+        payment = self.client.payments.get(created_payment.get('id'))
+        self.assertEqual(created_payment.get('amount'), payment.get('amount'))
+        self.assertEqual(created_payment.get('id'), payment.get('id'))
+        self.assertEqual(created_payment.get('createdDatetime'), payment.get('createdDatetime'))
+        return payment
+
+    def test_refund(self):
+        fetched_payment = self.test_get()
+        created_payment = self.test_create()
+        
+        try:
+            self.client.payments.refund(fetched_payment)
+        except Error as e:
+            if 'The payment is already refunded or has not been paid for yet.' in str(e):
+                return True
+
+        try:
+            self.client.payments.refund(created_payment)
+        except Error as e:
+            if 'The payment is already refunded or has not been paid for yet.' in str(e):
+                return True
+
 
 if __name__ == '__main__':
     unittest.main()

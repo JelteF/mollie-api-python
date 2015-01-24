@@ -44,9 +44,10 @@ class BaseResource():
         result = self.perform_api_call(self.REST_LIST, path, None, params)
         return result, self.get_resource_object({}).__class__
 
-    def create(self, data):
+    def create(self, data=None):
         try:
-            data = json.dumps(data)
+            if data is not None:
+                data = json.dumps(data)
         except Exception as e:
             raise Error('Error encoding parameters into JSON: "%s"' % str(e))
         return self.rest_create(data)

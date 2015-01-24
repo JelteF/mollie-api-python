@@ -26,4 +26,6 @@ class Payment(BaseObject):
 
 
 class Refund(BaseObject):
-    pass
+
+    def is_fully_refunded(self):
+        return self.get('amount') == self.get('amountRefunded')

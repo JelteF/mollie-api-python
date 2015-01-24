@@ -6,5 +6,4 @@ machine:
 
 test:
   override:
-    - ls -al
     - python3 -m mollie.tests
