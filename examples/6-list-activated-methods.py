@@ -2,26 +2,28 @@
 #
 #  Example 6 - How to get the currently activated payment methods.
 #
-import sys, os
-
+import sys
+import os
+from mollie.api.client import Client
+from app import EXAMPLE_API_KEY
 #
-# Add Mollie library to module path so we can import it.
+# Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
 #
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../'))
 
-import Mollie
+import mollie
 
 
 def main():
     try:
         #
-        # Initialize the Mollie API library with your API key.
+        # Initialize the mollie API library with your API key.
         #
         # See: https://www.mollie.nl/beheer/account/profielen/
         #
-        mollie = Mollie.API.Client()
-        mollie.setApiKey('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie = Client()
+        mollie.set_api_key(EXAMPLE_API_KEY)
 
         #
         # Get the all the activated methods for this API key.
@@ -37,8 +39,8 @@ def main():
 
         return body
 
-    except Mollie.API.Error as e:
+    except Error as e:
         return 'API call failed: ' + e.message
 
 if __name__ == '__main__':
-    print main()
+    print(main())

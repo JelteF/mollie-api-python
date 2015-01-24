@@ -1,6 +1,8 @@
 import os
 import flask
 
+EXAMPLE_API_KEY = "test_2rjdxSfxrvPei55ARwBBDipSRGsaGn"
+
 app = flask.Flask(__name__)
 examples = [
     '1-new-payment',

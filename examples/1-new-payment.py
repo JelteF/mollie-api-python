@@ -1,28 +1,30 @@
-# coding=utf-8
 #
-# Example 1 - How to prepare a new payment with the Mollie API.
+# Example 1 - How to prepare a new payment with the mollie API.
 #
-import sys, os, time, flask
-from app import database_write
+import sys
+import os
+import time
+import flask
+from app import *
+from mollie.api.client import Client
+from mollie.api.error import Error
 
 #
-# Add Mollie library to module path so we can import it.
+# Add mollie library to module path so we can import it.
 # This is not necessary if you use pip or easy_install.
 #
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/../'))
-
-import Mollie
 
 
 def main():
     try:
         #
-        # Initialize the Mollie API library with your API key.
+        # Initialize the mollie API library with your API key.
         #
         # See: https://www.mollie.nl/beheer/account/profielen/
         #
-        mollie = Mollie.API.Client()
-        mollie.setApiKey('test_bt7vvByF6jTcBR4dLuW66eNnHYNIJp')
+        mollie = Client()
+        mollie.set_api_key(EXAMPLE_API_KEY)
 
         #
         # Generate a unique order number for this example. It is important to include this unique attribute
@@ -54,11 +56,11 @@ def main():
         #
         # Send the customer off to complete the payment.
         #
-        return flask.redirect(payment.getPaymentUrl())
+        return flask.redirect(payment.get_payment_url())
 
-    except Mollie.API.Error as e:
+    except Error as e:
         return 'API call failed: ' + e.message
 
 
 if __name__ == '__main__':
-    print main()
+    main()

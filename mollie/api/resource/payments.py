@@ -1,12 +1,12 @@
-from Base import *
-from Mollie.API.Error import *
-from Mollie.API.Object import Payment, Refund
+from mollie.api.error import *
+from mollie.api.object.payment import Payment, Refund
+from .base_resource import BaseResource
 
 
-class Payments(Base):
+class Payments(BaseResource):
     RESOURCE_ID_PREFIX = 'tr_'
 
-    def getResourceObject(self, result):
+    def get_resource_object(self, result):
         return Payment(result)
 
     def get(self, payment_id):
@@ -17,17 +17,17 @@ class Payments(Base):
         return super(Payments, self).get(payment_id)
 
     def refund(self, payment):
-        return self.client.payment_refunds.on(payment).create()
+        return self.client.payment_refunds.on(payment).create()  # TODO add functionality
 
 
-class Refunds(Base):
+class Refunds(BaseResource):
     payment_id = None
 
-    def getResourceObject(self, result):
+    def get_resource_object(self, result):
         return Refund(result)
 
-    def getResourceName(self):
-        return 'payments/%i/refunds' % self.payment_id
+    def get_resource_name(self):
+        return 'payments/%s/refunds' % self.payment_id
 
     def on(self, payment):
         self.payment_id = payment['id']
